@@ -1,0 +1,10 @@
+<h1>Mark Attendance</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Attendance</button>
+</form>
+
+<br>
+<a href="/members/">Back</a>

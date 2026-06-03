@@ -1,0 +1,19 @@
+<h1>Church Reports Dashboard</h1>
+
+<h3>Members</h3>
+<ul>
+    <li>Total Members: {{ total_members }}</li>
+    <li>Active Members: {{ active_members }}</li>
+    <li>Inactive Members: {{ inactive_members }}</li>
+</ul>
+
+<h3>Financial Summary</h3>
+<ul>
+    <li>Total Tithes: {{ total_tithes }}</li>
+    <li>Total Offerings: {{ total_offerings }}</li>
+    <li><strong>Total Income: {{ total_tithes|add:total_offerings }}</strong></li>
+</ul>
+
+<br>
+
+<a href="/members/dashboard/">Back to Dashboard</a>

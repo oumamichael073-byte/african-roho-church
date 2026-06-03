@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Church Dashboard</h1>
+<a href="/members/reports/members/pdf/" class="btn btn-primary">
+    Download Members PDF
+</a>
+
+<a href="/members/reports/finance/pdf/" class="btn btn-success">
+    Download Finance PDF
+</a>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>{{ total_members }}</h3>
+                <p>Total Members</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>{{ active_members }}</h3>
+                <p>Active Members</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h3>{{ inactive_members }}</h3>
+                <p>Inactive Members</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<hr>
+{% endblock %}
+
+
+<h3>Church Growth Overview</h3>
+
+<canvas id="membersChart"></canvas>
+<canvas id="financeChart"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const membersChart = new Chart(document.getElementById('membersChart'), {
+    type: 'bar',
+    data: {
+        labels: ['Active', 'Inactive'],
+        datasets: [{
+            label: 'Members',
+            data: [{{ active_members }}, {{ inactive_members }}],
+            borderWidth: 1
+        }]
+    }
+});
+
+const financeChart = new Chart(document.getElementById('financeChart'), {
+    type: 'pie',
+    data: {
+        labels: ['Tithes', 'Offerings'],
+        datasets: [{
+            label: 'Income',
+            data: [{{ total_tithes }}, {{ total_offerings }}],
+            borderWidth: 1
+        }]
+    }
+});
+</script.>

@@ -1,0 +1,15 @@
+<h1>Church Members</h1>
+
+<a href="/members/add/">Add Member</a>
+
+<ul>
+    {% for member in members %}
+        <li>
+    <a href="/members/detail/{{ member.id }}/">
+        {{ member.first_name }} {{ member.last_name }}
+    </a>
+    - {{ member.status }}
+</li>
+    {% endfor %}
+</ul>
+

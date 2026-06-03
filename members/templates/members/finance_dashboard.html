@@ -1,0 +1,29 @@
+<h1>Church Financial Dashboard</h1>
+
+<h3>Summary</h3>
+<ul>
+    <li>Total Tithes: {{ total_tithes }}</li>
+    <li>Total Offerings: {{ total_offerings }}</li>
+    <li><strong>Total Income: {{ total_income }}</strong></li>
+</ul>
+
+<hr>
+
+<h3>Recent Tithes</h3>
+<ul>
+    {% for t in recent_tithes %}
+        <li>{{ t.member }} - {{ t.amount }} - {{ t.date }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Recent Offerings</h3>
+<ul>
+    {% for o in recent_offerings %}
+        <li>{{ o.description }} - {{ o.amount }} - {{ o.date }}</li>
+    {% endfor %}
+</ul>
+
+<br>
+
+<a href="/members/">Members</a> |
+<a href="/members/add/">Add Member</a>

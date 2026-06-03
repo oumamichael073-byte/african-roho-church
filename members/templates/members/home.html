@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Welcome to African Roho Msalaba Church</h1>
+
+<p>Church Management System</p>
+
+<div class="row">
+    <div class="col-md-4">
+        <a href="/members/dashboard/" class="btn btn-primary">
+            Dashboard
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/members/" class="btn btn-success">
+            Members
+        </a>
+    </div>
+
+    <div class="col-md-4">
+        <a href="/members/reports/" class="btn btn-warning">
+            Reports
+        </a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+<h1>Add Church Event</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Event</button>
+</form>
+
+<br>
+<a href="/members/dashboard/">Back to Dashboard</a>
