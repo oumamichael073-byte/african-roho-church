@@ -368,29 +368,7 @@ def members_pdf(request):
     return response
 
 def home(request):
-
-    announcements = Announcement.objects.order_by(
-        '-created_at'
-    )[:5]
-
-    events = Event.objects.order_by(
-        'event_date'
-    )[:5]
-
-    leaders = Leader.objects.all()[:4]
-
-    context = {
-        "announcements": announcements,
-        "events": events,
-        "leaders": leaders,
-    }
-
-    return render(
-        request,
-        "members/home.html",
-        context
-    )
-
+    return render(request, "members/home.html")
 
 def prayer_request(request):
 

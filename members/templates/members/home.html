@@ -59,3 +59,19 @@ prayer and fellowship.
 
 </body>
 </html>
+{% extends "members/base.html" %}
+
+{% block content %}
+
+<div style="text-align:center; padding:50px;">
+    <h1>🕊️ African Roho Msalaba Church</h1>
+    <p style="font-size:18px;">
+        Welcome to the official church management system
+    </p>
+
+    <a class="btn" href="{% url 'dashboard' %}">
+        Enter Dashboard
+    </a>
+</div>
+
+{% endblock %}
