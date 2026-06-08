@@ -1,0 +1,25 @@
+{% extends "members/base.html" %}
+
+{% block content %}
+
+<h2>Member Giving Summary</h2>
+
+<table border="1" cellpadding="10" width="100%">
+    <tr>
+        <th>Member</th>
+        <th>Tithes</th>
+        <th>Offerings</th>
+        <th>Total Giving</th>
+    </tr>
+
+    {% for m in members %}
+    <tr>
+        <td>{{ m.first_name }} {{ m.last_name }}</td>
+        <td>{{ m.total_tithe }}</td>
+        <td>{{ m.total_offering }}</td>
+        <td><strong>{{ m.total_giving }}</strong></td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

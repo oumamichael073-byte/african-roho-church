@@ -1,10 +1,10 @@
-<h1>Add New Member</h1>
+<h2>➕ Add Leader</h2>
 
-<form method="post">
+<form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
 
     <button type="submit">
-        Save Member
+        Save Leader
     </button>
 </form>

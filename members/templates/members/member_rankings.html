@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member Rankings</title>
+</head>
+<body>
+
+<h1>🏆 Top 10 Most Faithful Members</h1>
+
+<table border="1">
+    <tr>
+        <th>Rank</th>
+        <th>Member</th>
+        <th>Attendance Count</th>
+    <h2>🏆 Top Members Ranking</h2>
+
+<table border="1">
+    <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Attendance</th>
+        <th>Profile</th>
+    </tr>
+
+    {% for m in rankings %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ m.first_name }} {{ m.last_name }}</td>
+        <td>{{ m.attendance_count }}</td>
+        <td>
+            {% if m.id %}
+                <a href="{% url 'member_profile' m.id %}">View</a>
+            {% else %}
+                No Profile
+            {% endif %}
+        </td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">No members yet</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>🏆 Top 5 Most Faithful Members</h2>
+
+<table border="1">
+    <tr>
+        <th>Rank</th>
+        <th>Member</th>
+        <th>Attendance Count</th>
+    </tr>
+
+    {% for m in rankings %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ m.first_name }} {{ m.last_name }}</td>
+        <td>{{ m.attendance_count }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No attendance records yet</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

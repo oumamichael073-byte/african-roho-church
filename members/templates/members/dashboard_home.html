@@ -1,0 +1,36 @@
+<h1>Church Dashboard</h1>
+
+<div style="display:flex; gap:20px;">
+
+    <div style="border:1px solid black; padding:10px;">
+        <h3>Total Members</h3>
+        <p>{{ total_members }}</p>
+    </div>
+
+    <div style="border:1px solid black; padding:10px;">
+        <h3>Today Attendance</h3>
+        <p>{{ today_attendance }}</p>
+    </div>
+
+    <div style="border:1px solid black; padding:10px;">
+        <h3>Weekly Attendance</h3>
+        <p>{{ weekly_attendance }}</p>
+    </div>
+
+    <div style="border:1px solid black; padding:10px;">
+        <h3>Monthly Attendance</h3>
+        <p>{{ monthly_attendance }}</p>
+    </div>
+
+</div>
+
+<br>
+
+<h3>Quick Actions</h3>
+<br><br>
+
+<a href="/members/attendance/monthly/pdf/">📄 Download Monthly PDF Report</a>
+<a href="/members/add/">Add Member</a> |
+<a href="/members/attendance/add/">Add Attendance</a> |
+<a href="/members/attendance/">View Attendance</a> |
+<a href="/members/attendance/monthly/">Reports</a>

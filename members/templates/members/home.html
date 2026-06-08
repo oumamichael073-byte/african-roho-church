@@ -1,29 +1,61 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>African Roho Msalaba Church</title>
+</head>
+<body>
 
-{% block content %}
+<h1>African Roho Msalaba Church</h1>
 
-<h1>Welcome to African Roho Msalaba Church</h1>
+<hr>
 
-<p>Church Management System</p>
+<h2>Welcome</h2>
 
-<div class="row">
-    <div class="col-md-4">
-        <a href="/members/dashboard/" class="btn btn-primary">
-            Dashboard
-        </a>
-    </div>
+<p>
+Welcome to African Roho Msalaba Church.
+Serving God and the community through worship,
+prayer and fellowship.
+</p>
 
-    <div class="col-md-4">
-        <a href="/members/" class="btn btn-success">
-            Members
-        </a>
-    </div>
+<hr>
 
-    <div class="col-md-4">
-        <a href="/members/reports/" class="btn btn-warning">
-            Reports
-        </a>
-    </div>
-</div>
+<h2>Upcoming Events</h2>
 
-{% endblock %}
+{% for event in events %}
+<p>
+<b>{{ event.title }}</b><br>
+{{ event.event_date }}
+</p>
+{% empty %}
+<p>No upcoming events.</p>
+{% endfor %}
+
+<hr>
+
+<h2>Announcements</h2>
+
+{% for announcement in announcements %}
+<p>
+<b>{{ announcement.title }}</b><br>
+{{ announcement.message }}
+</p>
+{% empty %}
+<p>No announcements available.</p>
+{% endfor %}
+
+<hr>
+
+<h2>Church Leadership</h2>
+
+{% for leader in leaders %}
+<p>
+{{ leader.name }}
+-
+{{ leader.get_role_display }}
+</p>
+{% empty %}
+<p>No leaders added yet.</p>
+{% endfor %}
+
+</body>
+</html>

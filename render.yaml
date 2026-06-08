@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: african-roho-church
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn church_system.wsgi:application"

@@ -1,0 +1,43 @@
+{% extends "members/base.html" %}
+
+{% block content %}
+
+<h2>📱 Send SMS</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="phone" placeholder="Phone number" required>
+    <br><br>
+
+    <textarea name="message" placeholder="Enter message" required></textarea>
+    <br><br>
+
+    <button type="submit">Send SMS</button>
+</form>
+
+<hr>
+
+<h3>📜 Recent Messages</h3>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Phone</th>
+        <th>Message</th>
+        <th>Status</th>
+    </tr>
+
+    {% for m in messages %}
+    <tr>
+        <td>{{ m.phone }}</td>
+        <td>{{ m.message }}</td>
+        <td>{{ m.status }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No messages yet</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

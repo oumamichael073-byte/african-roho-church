@@ -1,16 +1,14 @@
-{% extends 'base.html' %}
+{% extends "members/base.html" %}
 
 {% block content %}
 
-<h1>Edit Member</h1>
+<h2>Edit Member</h2>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
 
-    <button type="submit" class="btn btn-primary">
-        Update Member
-    </button>
+    <button type="submit">Save Changes</button>
 </form>
 
 {% endblock %}

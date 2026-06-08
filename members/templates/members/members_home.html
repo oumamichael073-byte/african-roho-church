@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Members Home</title>
+</head>
+
+<body>
+
+<h1>Members Dashboard</h1>
+
+<p>Welcome to African Roho Msalaba Church Members System</p>
+<h2>Members</h2>
+
+<form method="GET">
+    <input type="text" name="q" placeholder="Search member name...">
+
+    <select name="status">
+        <option value="">All</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+    </select>
+
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+{% for member in members %}
+    <p>
+        <a href="{% url 'member_profile' member.id %}">
+            {{ member.first_name }} {{ member.last_name }}
+        </a>
+    </p>
+{% endfor %}
+
+    <div style="padding:10px; border:1px solid #ccc; margin-bottom:10px;">
+
+        <strong>
+            {% if member.id %}
+                <a href="{% url 'member_profile' member.id %}">
+                    {{ member.first_name }} {{ member.last_name }}
+                </a>
+            {% else %}
+                {{ member.first_name }} {{ member.last_name }}
+            {% endif %}
+        </strong>
+
+        <p>Phone: {{ member.phone }}</p>
+        <p>Status: {{ member.status }}</p>
+
+    </div>
+
+{% endfor %}
+
+</body>
+</html>

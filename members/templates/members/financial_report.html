@@ -1,0 +1,29 @@
+<h1>💰 Church Financial Report</h1>
+
+<hr>
+
+<h3>Total Tithes: KES {{ total_tithes }}</h3>
+
+<h3>Total Offerings: KES {{ total_offerings }}</h3>
+
+<h2>Total Income: KES {{ total_income }}</h2>
+
+<hr>
+
+<h2>Member Giving Summary</h2>
+
+<table border="1">
+<tr>
+    <th>Member</th>
+</tr>
+
+{% for member in members_giving %}
+<tr>
+    <td>
+        {{ member.first_name }}
+        {{ member.last_name }}
+    </td>
+</tr>
+{% endfor %}
+
+</table>

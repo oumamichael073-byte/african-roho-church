@@ -116,9 +116,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-LOGIN_REDIRECT_URL = '/members/dashboard/'
-LOGOUT_REDIRECT_URL = '/login/'
+STATICFILES_DIRS = [
+    BASE_DIR / "members/static",
+]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+LOGIN_URL = '/members/login/'
+LOGIN_REDIRECT_URL = '/members/'
+LOGOUT_REDIRECT_URL = '/members/login/'

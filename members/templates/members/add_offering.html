@@ -1,0 +1,21 @@
+<h1>Add Offering Page Works</h1>
+<h2>💵 Add Offering</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <select name="member">
+        {% for m in members %}
+            <option value="{{ m.id }}">{{ m.first_name }} {{ m.last_name }}</option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <input type="number" name="amount" placeholder="Amount">
+
+    <br><br>
+
+    <button type="submit">Save Offering</button>
+</form>
+

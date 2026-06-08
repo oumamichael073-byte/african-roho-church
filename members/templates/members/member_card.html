@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member Card</title>
+    <style>
+        .card {
+            width: 350px;
+            border: 2px solid black;
+            padding: 20px;
+            text-align: center;
+            margin: auto;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
+        .name {
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>AFRICAN ROHO MSALABA CHURCH</h2>
+
+    <div class="name">{{ member.name }}</div>
+    <p>Phone: {{ member.phone }}</p>
+    <p>Email: {{ member.email }}</p>
+
+    <p><b>Member ID:</b> {{ member.id }}</p>
+</div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Member Card</title>
+</head>
+<body>
+
+<h1>Member Card</h1>
+
+<p><strong>First Name:</strong> {{ member.first_name }}</p>
+<p><strong>Last Name:</strong> {{ member.last_name }}</p>
+<p><strong>Phone:</strong> {{ member.phone }}</p>
+<p><strong>Email:</strong> {{ member.email }}</p>
+<p><strong>Status:</strong> {{ member.status }}</p>
+
+</body>
+</html>

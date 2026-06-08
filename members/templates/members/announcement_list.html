@@ -1,0 +1,15 @@
+<h2>📢 Church Announcements</h2>
+
+<a href="/members/announcements/add/">➕ Add Announcement</a>
+
+<hr>
+
+{% for a in announcements %}
+    <div style="margin-bottom:20px;">
+        <h3>{{ a.title }}</h3>
+        <p>{{ a.message }}</p>
+        <small>{{ a.created_at }}</small>
+    </div>
+{% empty %}
+    <p>No announcements yet</p>
+{% endfor %}

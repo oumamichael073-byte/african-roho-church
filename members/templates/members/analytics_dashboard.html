@@ -1,0 +1,24 @@
+{% extends "members/base.html" %}
+
+{% block content %}
+
+<h2>📊 Church Analytics Dashboard</h2>
+
+<div>
+    <p>👥 Total Members: {{ total_members }}</p>
+    <p>💰 Total Tithes: {{ total_tithes }}</p>
+    <p>🎁 Total Offerings: {{ total_offerings }}</p>
+    <p>📋 Total Attendance: {{ total_attendance }}</p>
+</div>
+
+<hr>
+
+<h3>📈 Last 7 Days Activity</h3>
+
+<ul>
+    <li>Attendance: {{ recent_attendance }}</li>
+    <li>Tithes: {{ recent_tithes }}</li>
+    <li>Offerings: {{ recent_offerings }}</li>
+</ul>
+
+{% endblock %}

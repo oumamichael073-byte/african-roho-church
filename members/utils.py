@@ -13,48 +13,25 @@ def generate_member_pdf(request):
 
     p = canvas.Canvas(response)
 
-    p.setFont("Helvetica-Bold", 16)
-    p.drawString(200, 800, "Church Members Report")
-
-    y = 750
-
-    members = Member.objects.all()
-
-    for m in members:
-        p.setFont("Helvetica", 10)
-        p.drawString(50, y, f"{m.first_name} {m.last_name} - {m.phone} - {m.status}")
-        y -= 20
-
-        if y < 50:
-            p.showPage()
-            y = 800
-
-    p.save()
-    return response
+def is_pastor(user):
+    return user.groups.filter(
+        name='Pastor'
+    ).exists()
 
 
-# -------------------------
-# FINANCIAL REPORT PDF
-# -------------------------
-def generate_finance_pdf(request):
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="finance_report.pdf"'
+def is_treasurer(user):
+    return user.groups.filter(
+        name='Treasurer'
+    ).exists()
 
-    p = canvas.Canvas(response)
 
-    tithes = Tithe.objects.aggregate(total=Sum('amount'))['total'] or 0
-    offerings = Offering.objects.aggregate(total=Sum('amount'))['total'] or 0
+def is_secretary(user):
+    return user.groups.filter(
+        name='Secretary'
+    ).exists()
 
-    total_income = tithes + offerings
 
-    p.setFont("Helvetica-Bold", 16)
-    p.drawString(180, 800, "Church Financial Report")
-
-    p.setFont("Helvetica", 12)
-    p.drawString(50, 750, f"Total Tithes: {tithes}")
-    p.drawString(50, 730, f"Total Offerings: {offerings}")
-    p.drawString(50, 710, f"Total Income: {total_income}")
-
-    p.save()
-    return response
-
+def is_admin(user):
+    return user.groups.filter(
+        name='Administrator'
+    ).exists()

@@ -1,0 +1,52 @@
+<h2>Monthly Attendance Report</h2>
+
+<canvas id="attendanceChart" width="400" height="200"></canvas>
+
+<table border="1">
+    <tr>
+        <th>Month</th>
+        <th>Total</th>
+        <th>Present</th>
+        <th>Absent</th>
+    </tr>
+
+    {% for m in monthly_data %}
+    <tr>
+        <td>{{ m.month|date:"F Y" }}</td>
+        <td>{{ m.total }}</td>
+        <td>{{ m.present }}</td>
+        <td>{{ m.absent }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const labels = [
+    {% for m in monthly_data %}
+        "{{ m.month|date:'F Y' }}",
+    {% endfor %}
+];
+
+const data = {
+    labels: labels,
+    datasets: [{
+        label: 'Total Attendance',
+        data: [
+            {% for m in monthly_data %}
+                {{ m.total }},
+            {% endfor %}
+        ],
+        borderWidth: 2
+    }]
+};
+
+new Chart(document.getElementById('attendanceChart'), {
+    type: 'line',
+    data: data
+});
+</script>
+
+<br>
+<a href="/members/attendance/">Back</a>

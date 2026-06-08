@@ -1,37 +1,30 @@
 from django import forms
-from .models import Member
-from .models import Tithe
-from .models import Offering
-from .models import Event
+from .models import Member, Event, Leader, PrayerRequest
 
+
+# ---------------- MEMBER FORM ----------------
 class MemberForm(forms.ModelForm):
     class Meta:
         model = Member
-        fields = [
-            'first_name',
-            'last_name',
-            'phone',
-            'email',
-            'residence',
-            'status',
-            'photo',
-        ]
-from .models import Attendance
+        fields = '__all__'
 
-class AttendanceForm(forms.ModelForm):
-    class Meta:
-        model = Attendance
-        fields = ['member', 'status']
-class TitheForm(forms.ModelForm):
-    class Meta:
-        model = Tithe
-        fields = ['member', 'amount']
-class OfferingForm(forms.ModelForm):
-    class Meta:
-        model = Offering
-        fields = ['description', 'amount']
+
+# ---------------- EVENT FORM ----------------
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['title', 'description', 'location', 'event_date']
+        fields = '__all__'
 
+
+# ---------------- LEADER FORM ----------------
+class LeaderForm(forms.ModelForm):
+    class Meta:
+        model = Leader
+        fields = '__all__'
+
+
+# ---------------- PRAYER REQUEST FORM ----------------
+class PrayerRequestForm(forms.ModelForm):
+    class Meta:
+        model = PrayerRequest
+        fields = ['name', 'phone', 'request']

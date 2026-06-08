@@ -1,78 +1,96 @@
-{% extends 'base.html' %}
+{% extends "members/base.html" %}
 
 {% block content %}
 
-<h1>Church Dashboard</h1>
-<a href="/members/reports/members/pdf/" class="btn btn-primary">
-    Download Members PDF
-</a>
+<h1>📊 African Roho Msalaba Church Dashboard</h1>
 
-<a href="/members/reports/finance/pdf/" class="btn btn-success">
-    Download Finance PDF
-</a>
+<!-- STATS -->
+<div class="cards">
 
-<div class="row">
-
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h3>{{ total_members }}</h3>
-                <p>Total Members</p>
-            </div>
-        </div>
+    <div class="card">
+        <h3>Members</h3>
+        <p>{{ total_members }}</p>
     </div>
 
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h3>{{ active_members }}</h3>
-                <p>Active Members</p>
-            </div>
-        </div>
+    <div class="card">
+        <h3>Tithes</h3>
+        <p>{{ total_tithes }}</p>
     </div>
 
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <h3>{{ inactive_members }}</h3>
-                <p>Inactive Members</p>
-            </div>
-        </div>
+    <div class="card">
+        <h3>Offerings</h3>
+        <p>{{ total_offerings }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Attendance</h3>
+        <p>{{ total_attendance }}</p>
     </div>
 
 </div>
-<hr>
+
+<!-- QUICK ACTIONS -->
+<h2>⚡ Quick Actions</h2>
+
+<div class="actions">
+
+    <a class="btn" href="{% url 'mark_attendance' %}">➕ Attendance</a>
+
+    <a class="btn" href="{% url 'members_home' %}">👥 Members</a>
+
+    <a class="btn" href="{% url 'event_list' %}">📅 Events</a>
+
+    <a class="btn" href="{% url 'member_rankings' %}">🏆 Rankings</a>
+
+    <a class="btn" href="{% url 'members_pdf' %}">📄 Members PDF</a>
+
+</div>
+
+<!-- UPCOMING EVENTS -->
+<h2>📅 Upcoming Events</h2>
+
+<table border="1" cellpadding="10" width="100%">
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Location</th>
+    </tr>
+
+    {% for e in upcoming_events %}
+    <tr>
+        <td>{{ e.title }}</td>
+        <td>{{ e.event_date }}</td>
+        <td>{{ e.location }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No upcoming events</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!-- TOP MEMBERS -->
+<h2>🏆 Top 5 Members</h2>
+
+<table border="1" cellpadding="10" width="100%">
+    <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Attendance</th>
+    </tr>
+
+    {% for m in top_members %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ m.first_name }} {{ m.last_name }}</td>
+        <td>{{ m.attendance_count }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No data yet</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
 {% endblock %}
-
-
-<h3>Church Growth Overview</h3>
-
-<canvas id="membersChart"></canvas>
-<canvas id="financeChart"></canvas>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-const membersChart = new Chart(document.getElementById('membersChart'), {
-    type: 'bar',
-    data: {
-        labels: ['Active', 'Inactive'],
-        datasets: [{
-            label: 'Members',
-            data: [{{ active_members }}, {{ inactive_members }}],
-            borderWidth: 1
-        }]
-    }
-});
-
-const financeChart = new Chart(document.getElementById('financeChart'), {
-    type: 'pie',
-    data: {
-        labels: ['Tithes', 'Offerings'],
-        datasets: [{
-            label: 'Income',
-            data: [{{ total_tithes }}, {{ total_offerings }}],
-            borderWidth: 1
-        }]
-    }
-});
-</script.>

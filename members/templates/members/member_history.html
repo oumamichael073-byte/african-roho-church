@@ -1,0 +1,33 @@
+<h2>Member Attendance History</h2>
+
+<div style="border:1px solid black; padding:10px;">
+    <p>Total Records: {{ total }}</p>
+    <p>Present: {{ present }}</p>
+    <p>Absent: {{ absent }}</p>
+</div>
+
+<br>
+
+<table border="1">
+    <tr>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+
+    {% for a in attendance %}
+    <tr>
+        <td>{{ a.date }}</td>
+        <td>
+            {% if a.present %}
+                ✅ Present
+            {% else %}
+                ❌ Absent
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+<a href="/members/attendance/">Back to Attendance</a>

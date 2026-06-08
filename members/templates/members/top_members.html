@@ -1,0 +1,22 @@
+<h2>Top Faithful Members</h2>
+
+<table border="1">
+    <tr>
+        <th>Member</th>
+        <th>Total Attendance</th>
+        <th>Present</th>
+        <th>Rate (%)</th>
+    </tr>
+
+    {% for m in members %}
+    <tr>
+        <td>{{ m }}</td>
+        <td>{{ m.total }}</td>
+        <td>{{ m.present }}</td>
+        <td>{{ m.rate }}%</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="/members/attendance/">Back to Attendance</a>

@@ -1,0 +1,11 @@
+<h2>➕ Add Announcement</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="title" placeholder="Title"><br><br>
+
+    <textarea name="message" placeholder="Message"></textarea><br><br>
+
+    <button type="submit">Publish</button>
+</form>

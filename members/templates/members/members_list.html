@@ -1,0 +1,54 @@
+{% extends "members/base.html" %}
+
+{% block content %}
+
+<h2>Church Members</h2>
+
+<p>
+    <a href="{% url 'add_member' %}">➕ Add Member</a>
+</p>
+
+<form method="GET">
+    <input type="text" name="search" placeholder="Search member...">
+    <button type="submit">Search</button>
+</form>
+
+<br>
+
+<table border="1" cellpadding="10" width="100%">
+    <tr>
+        <th>Photo</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for m in members %}
+    <tr>
+
+        <td>
+            {% if m.photo %}
+                <img src="{{ m.photo.url }}" width="60" height="60" style="border-radius:50%;">
+            {% else %}
+                —
+            {% endif %}
+        </td>
+
+        <td>{{ m.first_name }} {{ m.last_name }}</td>
+
+        <td>{{ m.phone }}</td>
+
+        <td>{{ m.email }}</td>
+
+        <td>
+            <a href="{% url 'member_profile' m.id %}">View</a> |
+            <a href="{% url 'edit_member' m.id %}">Edit</a> |
+            <a href="{% url 'delete_member' m.id %}">Delete</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+</head>
+<body>
+
+<h1>Church Attendance</h1>
+
+<table border="1">
+    <tr>
+        <th>Member</th>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+
+    {% for a in attendance %}
+    <tr>
+        <td>{{ a.member }}</td>
+        <td>{{ a.date }}</td>
+        <td>{{ a.status }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>

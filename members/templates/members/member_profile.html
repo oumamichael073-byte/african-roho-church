@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+{% extends "members/base.html" %}
+
+{% block content %}
+
+<h2>Member Profile</h2>
+
+<p><strong>Name:</strong> {{ member.first_name }} {{ member.last_name }}</p>
+
+<p><strong>Phone:</strong> {{ member.phone }}</p>
+
+<p><strong>Email:</strong> {{ member.email }}</p>
+
+<p><strong>Residence:</strong> {{ member.residence }}</p>
+
+<p><strong>Status:</strong> {{ member.status }}</p>
+
+<p><strong>Total Tithes:</strong> {{ total_tithes }}</p>
+
+<p><strong>Total Offerings:</strong> {{ total_offerings }}</p>
+
+<h3>Attendance Records</h3>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Date</th>
+        <th>Service</th>
+        <th>Status</th>
+    </tr>
+
+    {% for a in attendance %}
+    <tr>
+        <td>{{ a.date }}</td>
+        <td>{{ a.service }}</td>
+        <td>{{ a.status }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="3">No attendance records</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+
+<br>
+
+<a href="/members/dashboard/">⬅ Back to Dashboard</a>

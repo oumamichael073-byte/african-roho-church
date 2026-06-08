@@ -1,0 +1,30 @@
+{% extends "members/base.html" %}
+
+{% block content %}
+
+<h2>➕ Add Church Event</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <p>
+        <label>Event Title</label><br>
+        <input type="text" name="title" required>
+    </p>
+
+    <p>
+        <label>Event Date</label><br>
+        <input type="date" name="event_date" required>
+    </p>
+
+    <p>
+        <label>Location</label><br>
+        <input type="text" name="location" required>
+    </p>
+
+    <button type="submit">
+        Save Event
+    </button>
+</form>
+
+{% endblock %}

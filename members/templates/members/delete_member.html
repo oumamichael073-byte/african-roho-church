@@ -1,20 +1,17 @@
-{% extends 'base.html' %}
+{% extends "members/base.html" %}
 
 {% block content %}
 
-<h1>Delete Member</h1>
+<h2>Delete Member</h2>
 
 <p>
-Are you sure you want to delete
-<strong>{{ member.first_name }} {{ member.last_name }}</strong>?
+    Are you sure you want to delete
+    <strong>{{ member.first_name }} {{ member.last_name }}</strong>?
 </p>
 
 <form method="POST">
     {% csrf_token %}
-
-    <button type="submit" class="btn btn-danger">
-        Delete
-    </button>
+    <button type="submit">Yes, Delete</button>
 </form>
 
 {% endblock %}
