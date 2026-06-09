@@ -155,6 +155,7 @@ urlpatterns = [
     'attendance/report/',
     views.attendance_report,
     name='attendance_report'
-    ),
-    
+    ),   
+    path('', views.members_list, name='member_list'),
+    path('add/', views.add_member, name='add_member'),
 ]

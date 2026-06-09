@@ -435,20 +435,9 @@ def send_sms(request):
 
 
 def members_list(request):
-    search = request.GET.get('search')
-
     members = Member.objects.all()
+    return render(request, 'members/member_list.html', {'members': members})
 
-    if search:
-        members = members.filter(first_name__icontains=search)
-
-    return render(
-        request,
-        'members/members_list.html',
-        {
-            'members': members
-        }
-    )
 
 
 def edit_member(request, member_id):
